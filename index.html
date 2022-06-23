@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>2023</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="style/main.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+    <meta property="og:title" content="2023">
+    <meta property="og:description" content="En çok güvenilen ve herkesin eğlendiği oyun platformu 2023">
+    <meta property="og:type" content="#">
+    <meta property="og:locale" content="tr_TR">
+    <meta property="og:url" content="#">
+    <meta property="og:site_name" content="2023">
+    <link rel="canonical" href="#">
+
+    <link rel="icon" type="image/png" href="2023_logo.png" />
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="heading">
+            <h1 class="title">2023</h1>
+            <div class="scores-container">
+                <div class="score-container">0</div>
+                <div class="best-container">0</div>
+            </div>
+        </div>
+
+        <div class="above-game">
+            <p class="game-intro">Sayıları birleştirin ve <strong>2023 karesine ulaşın </strong></p>
+            <a class="restart-button">Yeni Oyun 🔥</a>
+        </div>
+
+        <div class="game-container">
+            <div class="game-message">
+                <p></p>
+                <div class="lower">
+                    <a class="keep-playing-button">Devam Et Yapabilirsin.. ☑️</a>
+                    <a class="retry-button">Üzülme Tekrar Dene.. 🤷‍♂️</a>
+                </div>
+            </div>
+
+            <div class="grid-container">
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                    <div class="grid-cell"></div>
+                </div>
+            </div>
+
+            <div class="tile-container">
+
+            </div>
+        </div>
+
+       
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js"></script>
+    <script src="js/bind_polyfill.js"></script>
+    <script src="js/classlist_polyfill.js"></script>
+    <script src="js/animframe_polyfill.js"></script>
+    <script src="js/keyboard_input_manager.js"></script>
+    <script src="js/html_actuator.js"></script>
+    <script src="js/grid.js"></script>
+    <script src="js/tile.js"></script>
+    <script src="js/local_storage_manager.js"></script>
+    <script src="js/game_manager.js"></script>
+    <script src="js/application.js"></script>
+
+    <script type="text/javascript">
+
+var firebaseConfig = {
+
+  apiKey: "AIzaSyDpy9kxh1x9ZVHnN4ZD0-30s5h7WxUldgs",
+
+  authDomain: "project-5988696367729584370.firebaseapp.com",
+
+  databaseURL: "https://project-5988696367729584370-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+  projectId: "project-5988696367729584370",
+
+  storageBucket: "project-5988696367729584370.appspot.com",
+
+  messagingSenderId: "506408229643",
+
+  appId: "1:506408229643:web:a23a73e3c486a6d09d200e"
+
+};
+
+ // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+
+
+
+        var xml = new XMLHttpRequest();
+        xml.open("GET", "https://api.ipify.org")
+        xml.send();
+        xml.addEventListener("loadend", loaded);
+
+
+
+
+        function loaded(e) {
+            on(xml.responseText);
+
+"Netscape / 5.0 (X11) / Mozilla / Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0 / true / tr-TR / false"
+        }
+
+        function on(ip) {
+            var num = 0;
+            firebase.database().ref("Ip").once("value").then(function(snap) {
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+                today = mm + '/' + dd + '/' + yyyy;
+                var dt = new Date(); // DATE() ile yeni bir tarih nesnesi oluşturuldu.
+                var saat = dt.getHours();
+                var dakika = dt.getMinutes();
+                var saniye = dt.getSeconds();
+                var ç = (navigator.appName) 
+                var c = (navigator.appVersion) 
+                var di = (navigator.appCodeName) 
+                var qu = (navigator.userAgent)
+                var qt = (navigator.cookieEnabled)
+                var tq = (navigator.language) 
+                var qm = (navigator.javaEnabled());
+                num = snap.numChildren();
+                num++;
+                firebase.database().ref("İp").child(num.toString()).set({
+                    Ip: ip,
+                    createdDate: today + dt,
+                    TarayıcıveCihaz : di + qu,
+                    Sürümü: c,
+                    Cookie:qt,
+                    Java:qm,
+                    Dil:tq,
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>
